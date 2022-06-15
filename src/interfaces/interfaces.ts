@@ -21,7 +21,7 @@ export interface iUser {
     sobreMim: string
     nome: string
     sobrenome: string
-    fotos: iFotos[]
-    midias: iMidias[]
-    categorias: string[]
+    fotos?: iFotos[]
+    midias?: iMidias[]
+    categorias?: string[]
 }
