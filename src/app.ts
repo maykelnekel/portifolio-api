@@ -1,5 +1,7 @@
-import express, { Request, Response } from "express"
+import express from "express"
 import mongoose from "mongoose"
+import fotosRouter from "./routes/fotos.router"
+import loginRouter from "./routes/login.router"
 
 require('dotenv').config()
 
@@ -9,14 +11,14 @@ const dbUrl = process.env.BD_URL_CONNECTION
 
 app.use(express.json())
 
-app.get('/', (req: Request, res: Response)=> res.status(200).send({message: "sds"}))
+app.use("/login", loginRouter)
+app.use("/fotos", fotosRouter)
 
 mongoose.connect(dbUrl as string)
 .then(()=>{
     console.log("banco conectado com sucesso")
-    app.listen(port, () => console.log("app iniciado"))})
+    app.listen(port, () => console.log("app iniciado com sucesso"))})
 .catch((err)=> console.log(err))
 
-// app.listen(port, () => console.log("app iniciado"))
 
 export default app
