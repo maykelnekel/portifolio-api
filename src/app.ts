@@ -2,19 +2,19 @@ import express from "express"
 import mongoose from "mongoose"
 import fotosRouter from "./routes/fotos.router"
 import loginRouter from "./routes/login.router"
-import userRouter from "./routes/user.router"
+import perfilRouter from "./routes/perfil.router"
 
 require('dotenv').config()
 
-const port = 3000
-const app = express()
 const bdUrl = process.env.BD_URL_CONNECTION
+const port = process.env.PORT
 
+const app = express()
 app.use(express.json())
-
-app.use("/login", loginRouter)
+app.use("", loginRouter)
 app.use("/fotos", fotosRouter)
-app.use("/user", userRouter)
+app.use("/perfil", perfilRouter)
+
 
 mongoose.connect(bdUrl as string)
 .then(()=>{
