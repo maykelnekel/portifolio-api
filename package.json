@@ -1,7 +1,7 @@
 {
   "name": "portifolio-api",
   "version": "1.0.0",
-  "main": "./src/app.ts",
+  "main": "index.js",
   "repository": "git@github.com.personal:maykelnekel/portifolio-api.git",
   "author": "maykel nekel <maykelnekel@gmail.com>",
   "license": "MIT",
