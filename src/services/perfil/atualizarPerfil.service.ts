@@ -2,7 +2,7 @@ import { AnyAaaaRecord } from "dns";
 import Usuarios from "../../models/user.model";
 
 
-const serviceAtualizarPerfil = async (userId: string, data: object) => {
+const atualizarPerfilService = async (userId: string, data: object) => {
     const updateOptions =  {
         new: true, 
         runValidators: true
@@ -17,4 +17,4 @@ const serviceAtualizarPerfil = async (userId: string, data: object) => {
     return usuario
 
 }
-export default serviceAtualizarPerfil
+export default atualizarPerfilService

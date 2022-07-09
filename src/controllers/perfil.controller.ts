@@ -1,35 +1,24 @@
 import { Request, Response } from "express";
-import serviceAtualizarPerfil from "../services/perfil/atualizarPerfil.service";
-import pegarUsuarios from "../services/perfil/pegarUsuarios";
-import pegarUsuarioUnico from "../services/perfil/pegarUsuarioUnico.service";
+import atualizarPerfilService from "../services/perfil/atualizarPerfil.service";
+import listarPerfilService from "../services/perfil/listarPerfil.service";
 
-export const listarUsuarios = async (req: Request, res: Response) => {
+export const listarPerfilController = async (req: Request, res: Response) => {
     try {
-        const usuario = await pegarUsuarios()
+        const id = req.user._id
 
-        return res.status(200).send(usuario)
+        const usuario = await listarPerfilService(id)
+        return res.status(200).json(usuario)
+
     } catch (error: any) {
-        return res.status(400).send({message: error.message})
+        return res.status(400).json({message: error.message})
     }
 }
 
-export const listarPerfil = async (req: Request, res: Response) => {
+export const atualizarPerfilController = async (req: Request, res: Response) => {
     try {
-        const id = req.params.userId
-
-        const usuario = await pegarUsuarioUnico(id)
-        return res.status(200).send(usuario)
-
-    } catch (error: any) {
-        return res.status(400).send({message: error.message})
-    }
-}
-
-export const atualizarPerfil = async (req: Request, res: Response) => {
-    try {
-        const id = req.params.userId
+        const id = req.user._id
         const data = req.body
-        const usuario = await serviceAtualizarPerfil(id, data)
+        const usuario = await atualizarPerfilService(id, data)
 
         return res.status(200).send(usuario)
     } catch (error: any) {

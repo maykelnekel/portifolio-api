@@ -1,5 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
+import authenticationMiddleware from "./middleware/auth.middleware"
 import fotosRouter from "./routes/fotos.router"
 import loginRouter from "./routes/login.router"
 import perfilRouter from "./routes/perfil.router"
@@ -11,7 +12,8 @@ const port = process.env.PORT
 
 const app = express()
 app.use(express.json())
-app.use("", loginRouter)
+app.use("/login", loginRouter)
+app.use(authenticationMiddleware)
 app.use("/fotos", fotosRouter)
 app.use("/perfil", perfilRouter)
 
@@ -19,7 +21,10 @@ app.use("/perfil", perfilRouter)
 mongoose.connect(bdUrl as string)
 .then(()=>{
     console.log("banco conectado com sucesso")
-    app.listen(port, () => console.log("app iniciado com sucesso"))})
+    app.listen(port, () => {
+        console.log("app iniciado com sucesso")
+        
+    })})
 .catch((err)=> console.log(err))
 
 

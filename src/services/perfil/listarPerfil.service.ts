@@ -1,7 +1,7 @@
 import Usuarios from "../../models/user.model";
 
 
-const pegarUsuarioUnico = async (userId: string) => {
+const listarPerfilService = async (userId: string) => {
     
        const usuario = await Usuarios.findById(userId)
         if (!usuario){
@@ -10,4 +10,4 @@ const pegarUsuarioUnico = async (userId: string) => {
         return usuario
 } 
 
-export default pegarUsuarioUnico
+export default listarPerfilService

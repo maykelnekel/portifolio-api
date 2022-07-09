@@ -9,12 +9,12 @@ const UsuarioSchema = new mongoose.Schema<iUser>({
     sobreMim: { type: String, required: true },
     nome: { type: String, required: true },
     sobrenome: { type: String, required: true },
-    fotos: [{
+    midias: [{
         nome: String,
         usuario: String,
         link: String,
     }],
-    midias: [{
+    fotos: [{
         link: String,
         descricao: String,
         categoria: String

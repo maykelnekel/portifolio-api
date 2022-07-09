@@ -1,19 +1,19 @@
 export interface iMidias {
-    id?: string
+    _id?: string
     nome: string
     usuario: string
     link: string
 }
 
 export interface iFotos {
-    id?: string
+    _id?: string
     link: string
     descricao: string
     categoria: string
 }
 
 export interface iUser {
-    id?: string
+    _id?: string
     login: string
     email: string
     telefone: string

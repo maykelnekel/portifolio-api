@@ -1,19 +1,15 @@
 import { Response, Request } from "express";
 import bcrypt from 'bcrypt'
 import Usuarios from "../models/user.model";
+import loginService from "../services/login/login.service";
 
-const login = async (req: Request,res: Response) => {
-    const {bodyEmail, bodySenha} = req.body
-    const person = await Usuarios.findOne({email: bodyEmail})
+export const login = async (req: Request,res: Response) => {
+    try {
+        const {email, senha} = req.body
+        const token = await loginService(email,senha)
+        return res.status(200).send({token: token})
 
-    if (!person){
-        return res.status(404).send({message:'Usuário não encontrado'})
+    } catch (error: any) {
+        return res.status(400).send(error?.message)
     }
-    bcrypt.compare(bodySenha, person?.senha,(err, hash)=>{
-        if(err){
-            return res.status(401).send({message: 'Senha incorreta'})
-        }
-        const token = 'token'
-        return res.status(200).send({message: token})
-    })
 }

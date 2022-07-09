@@ -1,10 +1,10 @@
 import { Router } from "express"
-import { atualizarPerfil, listarPerfil, listarUsuarios } from "../controllers/perfil.controller"
+import { atualizarPerfilController, listarPerfilController } from "../controllers/perfil.controller"
+import authenticationMiddleware from "../middleware/auth.middleware"
 
 const userRouter = Router()
 
-userRouter.get('', listarUsuarios)
-userRouter.get('/:userId', listarPerfil)
-userRouter.patch('/:userId', atualizarPerfil)
+userRouter.get('', listarPerfilController)
+userRouter.patch('', atualizarPerfilController)
 
 export default userRouter
