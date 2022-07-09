@@ -12,8 +12,6 @@ const atualizarFotoService = async (userId: string, fotoId: string, data: iFotos
 
     let index = fotos?.indexOf(fotoFiltrada![0])
     const foto = fotos![index!]
-    // console.log(index)
-    console.log(fotoFiltrada)
     
     foto.categoria = data.categoria ? data.categoria : foto.categoria;
     foto.descricao = data.descricao ? data.descricao : foto.descricao;

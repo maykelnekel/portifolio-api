@@ -1,8 +1,8 @@
 import express from "express"
 import mongoose from "mongoose"
-import authenticationMiddleware from "./middleware/auth.middleware"
 import fotosRouter from "./routes/fotos.router"
 import loginRouter from "./routes/login.router"
+import midiasRouter from "./routes/midias.router"
 import perfilRouter from "./routes/perfil.router"
 
 require('dotenv').config()
@@ -15,6 +15,7 @@ app.use(express.json())
 app.use("/login", loginRouter)
 app.use("/fotos", fotosRouter)
 app.use("/perfil", perfilRouter)
+app.use("/midias", midiasRouter)
 
 
 mongoose.connect(bdUrl as string)

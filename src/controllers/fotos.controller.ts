@@ -11,7 +11,7 @@ export const registrarFotoController = async (req:Request, res: Response) => {
         const id = req.user._id
         const fotos = await registrarUnicaFotoService(id, data)
 
-        res.status(200).json(fotos)
+        res.status(204).json(fotos)
     } catch (error: any) {
         res.status(400).json({message: error.message})
     }

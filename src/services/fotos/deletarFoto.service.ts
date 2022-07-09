@@ -10,7 +10,6 @@ const deletarFotoService = async (userId: string, fotoId: string) => {
     }
 
     let novasFotos = fotos.filter(item => item._id?.valueOf() !== fotoId)
-    console.log(!foto)
 
     await Usuarios.findOneAndUpdate({_id: userId},{fotos: novasFotos ? novasFotos : []})
     
