@@ -1,5 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
+import categoriasRouter from "./routes/categorias.router"
 import fotosRouter from "./routes/fotos.router"
 import loginRouter from "./routes/login.router"
 import midiasRouter from "./routes/midias.router"
@@ -16,6 +17,7 @@ app.use("/login", loginRouter)
 app.use("/fotos", fotosRouter)
 app.use("/perfil", perfilRouter)
 app.use("/midias", midiasRouter)
+app.use("/categorias", categoriasRouter)
 
 
 mongoose.connect(bdUrl as string)

@@ -19,7 +19,9 @@ const UsuarioSchema = new mongoose.Schema<iUser>({
         descricao: String,
         categoria: String
     }],
-    categorias: [String],
+    categorias: [{
+        categoria: String
+    }],
 })
 
 export default UsuarioSchema

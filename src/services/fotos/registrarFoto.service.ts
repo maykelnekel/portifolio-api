@@ -9,7 +9,11 @@ const registrarUnicaFotoService = async (userId: string, data: iFotos) => {
     await Usuarios.findOneAndUpdate({_id: userId},{fotos: novasFotos})
     user = await Usuarios.findById(userId)
 
-    return data
+    const dadosRetorno = user!.fotos
+    
+
+    return dadosRetorno![dadosRetorno!.length - 1]
+
 
 }
 

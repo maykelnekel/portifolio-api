@@ -11,7 +11,7 @@ export const registrarMidiaController = async (req:Request, res: Response) => {
         const userId = req.user._id
         const midia = await registrarUnicaMidiaService(userId, data)
 
-        res.status(204).json()
+        res.status(201).json(midia)
     } catch (error: any) {
         res.status(400).json({message: error.message})
     }

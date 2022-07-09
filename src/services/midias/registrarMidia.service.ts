@@ -9,7 +9,9 @@ const registrarUnicaMidiaService = async (userId: string, data: iMidias) => {
     await Usuarios.findOneAndUpdate({_id: userId},{midias: novasMidias})
     user = await Usuarios.findById(userId)
 
-    return data
+    const dadosRetorno = user!.midias
+    
+    return dadosRetorno![dadosRetorno!.length - 1]
 
 }
 

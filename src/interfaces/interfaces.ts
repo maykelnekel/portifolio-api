@@ -12,6 +12,11 @@ export interface iFotos {
     categoria: string
 }
 
+export interface iCategorias {
+    _id?: string
+    categoria: string
+}
+
 export interface iUser {
     _id?: string
     login: string
@@ -23,5 +28,5 @@ export interface iUser {
     sobrenome: string
     fotos?: iFotos[]
     midias?: iMidias[]
-    categorias?: string[]
+    categorias?: iCategorias[]
 }
