@@ -1,7 +1,22 @@
-import bcrypt from "bcrypt"
+import bcryptjs from 'bcryptjs'
 import { iUser } from "../interfaces/interfaces"
 import Usuarios from "../models/user.model"
-import hashSenha from "../services/perfil/hashSenha.service"
+
+const hashSenha = (senha: String): string => {
+    const hash = bcryptjs.hashSync(senha as string, 10)
+    return hash
+}
+
+export const criaUsuario = async (usuario: iUser) => {
+    const user = await Usuarios.create(usuario)
+    return user
+}
+
+export const atualizaSenha = async (id: string, senha: string) => {
+    const senhaHash = hashSenha(senha)
+    const userAtt = await Usuarios.findByIdAndUpdate(id, { senha: senhaHash })
+    return userAtt
+}
 
 export const jessica = {
     login: "jehmassuquetto",
@@ -12,12 +27,3 @@ export const jessica = {
     nome: "Jessica",
     sobrenome: "Massuquetto",
 }
-
-export const criaUsuario = async  (usuario: iUser) => await Usuarios.create(usuario)
-
-export const atualizaSenha = async (id: string, senha: string) => {
-    const senhaHash = await bcrypt.hash(senha, 11)
-    const userAtt = await Usuarios.findByIdAndUpdate(id, {senha: senhaHash})
-    return userAtt
-}
-
