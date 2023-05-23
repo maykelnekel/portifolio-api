@@ -19,7 +19,6 @@ export interface iCategorias {
 
 export interface iUser {
   _id?: string;
-  login: string;
   email: string;
   telefone: string;
   senha: string;

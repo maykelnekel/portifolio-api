@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { iUser } from "../interfaces/interfaces";
 
 const usuarioSchema = new mongoose.Schema<iUser>({
-  login: { type: String, required: true },
   email: { type: String, required: true },
   telefone: { type: String, required: true },
   senha: { type: String, required: true },
