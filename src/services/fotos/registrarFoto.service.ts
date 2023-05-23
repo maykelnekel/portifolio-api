@@ -1,20 +1,20 @@
 import { iFotos } from "../../interfaces/interfaces";
-import Usuarios from "../../models/user.model"
+import Usuarios from "../../models/user.model";
 
-const registrarUnicaFotoService = async (userId: string, data: iFotos) => {
-    let user = await Usuarios.findById(userId)
+const registrarUnicaFotoService = async (
+  userId: string,
+  data: iFotos
+): Promise<iFotos> => {
+  let user = await Usuarios.findById(userId);
 
-    const novasFotos = [...user!.fotos!, data]
+  const novasFotos = [...user!.fotos!, data];
 
-    await Usuarios.findOneAndUpdate({_id: userId},{fotos: novasFotos})
-    user = await Usuarios.findById(userId)
+  await Usuarios.findOneAndUpdate({ _id: userId }, { fotos: novasFotos });
+  user = await Usuarios.findById(userId);
 
-    const dadosRetorno = user!.fotos
-    
+  const dadosRetorno = user!.fotos;
 
-    return dadosRetorno![dadosRetorno!.length - 1]
+  return dadosRetorno![dadosRetorno!.length - 1];
+};
 
-
-}
-
-export default registrarUnicaFotoService
+export default registrarUnicaFotoService;

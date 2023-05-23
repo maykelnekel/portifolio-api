@@ -1,11 +1,14 @@
-import { Router } from "express"
-import { atualizarPerfilController, listarPerfilController } from "../controllers/perfil.controller"
-import authenticationMiddleware from "../middleware/auth.middleware"
+import { Router } from "express";
+import {
+  atualizarPerfilController,
+  listarPerfilController,
+} from "../controllers/perfil.controller";
+import authenticationMiddleware from "../middleware/auth.middleware";
 
-const userRouter = Router()
+const userRouter = Router();
 
-userRouter.use(authenticationMiddleware)
-userRouter.get('', listarPerfilController)
-userRouter.patch('', atualizarPerfilController)
+userRouter.use(authenticationMiddleware);
+userRouter.get("", listarPerfilController);
+userRouter.patch("", atualizarPerfilController);
 
-export default userRouter
+export default userRouter;

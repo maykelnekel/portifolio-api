@@ -1,20 +1,22 @@
-import { AnyAaaaRecord } from "dns";
+import AppError from "../../errors/appError";
+import { iUser } from "../../interfaces/interfaces";
 import Usuarios from "../../models/user.model";
 
+const atualizarPerfilService = async (
+  userId: string,
+  data: object
+): Promise<iUser | AppError> => {
+  const updateOptions = {
+    new: false,
+    runValidators: true,
+  };
 
-const atualizarPerfilService = async (userId: string, data: object) => {
-    const updateOptions =  {
-        new: true, 
-        runValidators: true
-    }
+  const usuario = await Usuarios.findByIdAndUpdate(userId, data, updateOptions);
 
-    const usuario = await Usuarios.findByIdAndUpdate(userId, data, updateOptions)
+  if (!usuario) {
+    throw new AppError(404, "Usuário não encontrado");
+  }
 
-    if(!usuario){
-        throw new Error("Usuário não encontrado")
-    }
-
-    return usuario
-
-}
-export default atualizarPerfilService
+  return usuario;
+};
+export default atualizarPerfilService;

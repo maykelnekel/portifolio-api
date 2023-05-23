@@ -1,10 +1,9 @@
-import Usuarios from "../../models/user.model"
+import { iMidias } from "../../interfaces/interfaces";
+import Usuarios from "../../models/user.model";
 
-const listarTodasMidiaService = async (userId: string) => {
-    
-    let user = await Usuarios.findById(userId)
-    return user?.midias
+const listarTodasMidiaService = async (userId: string): Promise<iMidias[]> => {
+  let user = await Usuarios.findById(userId);
+  return user?.midias!;
+};
 
-}
-
-export default listarTodasMidiaService
+export default listarTodasMidiaService;
