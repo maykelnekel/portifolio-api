@@ -8,7 +8,8 @@ const loginService = async (
   email: string,
   senha: string
 ): Promise<string | AppError> => {
-  const person = await Usuarios.findOne({ where: { email: email } });
+  const person = await Usuarios.findOne({ email });
+  console.log(email, person);
 
   if (!person) {
     throw new AppError(401, "Usuário ou senha incorretos");
