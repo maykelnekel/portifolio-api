@@ -8,5 +8,4 @@ Tecnologias utilizadas
 - MongoDB
 - Mongoose
 
-[Link para documentação](https://maykelnekel.github.io/portifolio-api-doc/)
- 
+<a href="https://maykelnekel.github.io/portifolio-api-doc/" target="_blank">Link para a documentação</a>
