@@ -29,3 +29,15 @@ export interface iUser {
   midias?: iMidias[];
   categorias?: iCategorias[];
 }
+
+export interface iUserResponse {
+  _id?: string;
+  email: string;
+  telefone: string;
+  sobreMim: string;
+  nome: string;
+  sobrenome: string;
+  fotos: string;
+  midias: string;
+  categorias: string;
+}

@@ -1,22 +1,39 @@
 import AppError from "../../errors/appError";
-import { iUser } from "../../interfaces/interfaces";
+import { iUser, iUserResponse } from "../../interfaces/interfaces";
 import Usuarios from "../../models/user.model";
+import "dotenv/config";
 
+const baseUrl = process.env.BASE_URL;
 const atualizarPerfilService = async (
   userId: string,
   data: object
-): Promise<iUser | AppError> => {
+): Promise<iUserResponse | AppError> => {
   const updateOptions = {
     new: false,
     runValidators: true,
   };
 
-  const usuario = await Usuarios.findByIdAndUpdate(userId, data, updateOptions);
+  const usuario: iUser | null = await Usuarios.findByIdAndUpdate(
+    userId,
+    data,
+    updateOptions
+  );
 
   if (!usuario) {
     throw new AppError(404, "Usuário não encontrado");
   }
 
-  return usuario;
+  const usuarioResposta: iUserResponse = {
+    _id: usuario._id,
+    email: usuario.email,
+    telefone: usuario.telefone,
+    sobreMim: usuario.sobreMim,
+    nome: usuario.nome,
+    sobrenome: usuario.sobrenome,
+    fotos: `${baseUrl}/fotos`,
+    midias: `${baseUrl}/midias`,
+    categorias: `${baseUrl}/categorias`,
+  };
+  return usuarioResposta;
 };
 export default atualizarPerfilService;
